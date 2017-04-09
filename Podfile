@@ -8,5 +8,5 @@ target 'Connected Reporting' do
   use_frameworks!
 
   # Pods for Connected Reporting
-
+  pod 'Firebase/Core'
 end
