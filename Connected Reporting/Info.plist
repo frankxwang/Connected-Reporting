@@ -36,5 +36,7 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your location is used to create reports.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your photos are used in your reports.</string>
 </dict>
 </plist>

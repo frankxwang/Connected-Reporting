@@ -26,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOn-bL-vKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1374" y="-213"/>
+            <point key="canvasLocation" x="-1415" y="152"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qTy-DD-2R7">
@@ -122,6 +122,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-ZQ-N63">
+                                <rect key="frame" x="26" y="62" width="325" height="238"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="ys4-2L-fUp" kind="embed" id="VkV-Yd-OjC"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,18 +153,37 @@
             </objects>
             <point key="canvasLocation" x="365.60000000000002" y="-303.59820089955025"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="sEA-hu-Dsy">
+        <!--Camera View Controller-->
+        <scene sceneID="hbk-BV-yfR">
             <objects>
-                <viewController id="N6N-sU-Gcw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vut-6V-cPj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="ys4-2L-fUp" customClass="CameraViewController" customModule="Connected_Reporting" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k5n-EU-MQd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qog-WA-dK8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pDT-jb-SfI">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="238"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-fq-Hgh">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JR-1R-gMe">
+                                <rect key="frame" x="107" y="200" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Choose Image..."/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imagePicked" destination="Gfb-fq-Hgh" id="cZE-ra-OnK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="orH-TZ-gtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Az7-Lx-CF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1164" y="-467.76611694152928"/>
         </scene>
     </scenes>
 </document>
