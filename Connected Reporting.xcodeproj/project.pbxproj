@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011CEB351E9A0682000A53C6 /* ReportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CEB341E9A0682000A53C6 /* ReportingViewController.swift */; };
 		01A649EE1E99D0A400520AA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A649ED1E99D0A400520AA9 /* AppDelegate.swift */; };
 		01A649F01E99D0A400520AA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A649EF1E99D0A400520AA9 /* ViewController.swift */; };
 		01A649F31E99D0A400520AA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F11E99D0A400520AA9 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011CEB341E9A0682000A53C6 /* ReportingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportingViewController.swift; sourceTree = "<group>"; };
 		01A649EA1E99D0A400520AA9 /* Connected Reporting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Connected Reporting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A649ED1E99D0A400520AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A649EF1E99D0A400520AA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				01A649ED1E99D0A400520AA9 /* AppDelegate.swift */,
 				01A649EF1E99D0A400520AA9 /* ViewController.swift */,
 				01A649F11E99D0A400520AA9 /* Main.storyboard */,
+				011CEB341E9A0682000A53C6 /* ReportingViewController.swift */,
 				01A649F41E99D0A400520AA9 /* Assets.xcassets */,
 				01A649F61E99D0A400520AA9 /* LaunchScreen.storyboard */,
 				01A649F91E99D0A400520AA9 /* Info.plist */,
@@ -218,6 +221,7 @@
 			files = (
 				01A649F01E99D0A400520AA9 /* ViewController.swift in Sources */,
 				01A649EE1E99D0A400520AA9 /* AppDelegate.swift in Sources */,
+				011CEB351E9A0682000A53C6 /* ReportingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

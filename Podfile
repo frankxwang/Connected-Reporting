@@ -9,4 +9,7 @@ target 'Connected Reporting' do
 
   # Pods for Connected Reporting
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'JSQMessagesViewController'
 end
