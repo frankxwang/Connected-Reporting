@@ -14,6 +14,7 @@
 		01A649F51E99D0A400520AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F41E99D0A400520AA9 /* Assets.xcassets */; };
 		01A649F81E99D0A400520AA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F61E99D0A400520AA9 /* LaunchScreen.storyboard */; };
 		01A64A001E99D91400520AA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */; };
+		01B874481E9A2A640084493D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B874471E9A2A640084493D /* MapViewController.swift */; };
 		4A9108BF93B7C64B56B01E7D /* Pods_Connected_Reporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A526C4073E1888C4196895C /* Pods_Connected_Reporting.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		01A649F71E99D0A400520AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01A649F91E99D0A400520AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01B874471E9A2A640084493D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3692BACD4AF2903BAA7CD8FD /* Pods-Connected Reporting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connected Reporting.release.xcconfig"; path = "Pods/Target Support Files/Pods-Connected Reporting/Pods-Connected Reporting.release.xcconfig"; sourceTree = "<group>"; };
 		4EEE48AC281B0C16299F349C /* Pods-Connected Reporting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connected Reporting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Connected Reporting/Pods-Connected Reporting.debug.xcconfig"; sourceTree = "<group>"; };
 		8A526C4073E1888C4196895C /* Pods_Connected_Reporting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Connected_Reporting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 				01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */,
 				01A649ED1E99D0A400520AA9 /* AppDelegate.swift */,
 				01A649EF1E99D0A400520AA9 /* ViewController.swift */,
+				01B874471E9A2A640084493D /* MapViewController.swift */,
 				01A649F11E99D0A400520AA9 /* Main.storyboard */,
 				011CEB341E9A0682000A53C6 /* ReportingViewController.swift */,
 				01A649F41E99D0A400520AA9 /* Assets.xcassets */,
@@ -222,6 +225,7 @@
 				01A649F01E99D0A400520AA9 /* ViewController.swift in Sources */,
 				01A649EE1E99D0A400520AA9 /* AppDelegate.swift in Sources */,
 				011CEB351E9A0682000A53C6 /* ReportingViewController.swift in Sources */,
+				01B874481E9A2A640084493D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

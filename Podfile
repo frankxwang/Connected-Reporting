@@ -12,4 +12,5 @@ target 'Connected Reporting' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
+  pod 'GoogleMaps'
 end
