@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import CoreLocation
 class ReportingViewController: UIViewController {
     var ref: FIRDatabaseReference!
     
@@ -17,14 +18,34 @@ class ReportingViewController: UIViewController {
     @IBOutlet weak var titleVal: UITextView!
     @IBAction func Report(_ sender: Any) {
         self.ref.child(titleVal.text).setValue(descriptionVal.text)
+        self.ref.child("\(titleVal.text) lat").setValue(CLLocationManager().location?.coordinate.latitude)
+        self.ref.child("\(titleVal.text) long").setValue(CLLocationManager().location?.coordinate.longitude)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
         FIRAuth.auth()?.signInAnonymously()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ReportingViewController.dismissKeyboard))
+        let manager = CLLocationManager()
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            manager.requestAlwaysAuthorization()
+        }
+        
+        view.addGestureRecognizer(tap)
+//        descriptionVal.returnKeyType = UIReturnKeyType.done
         // Do any additional setup after loading the view.
     }
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            manager.startUpdatingLocation()
+        }
+    }
 
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

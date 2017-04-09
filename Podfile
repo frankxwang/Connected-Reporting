@@ -13,4 +13,5 @@ target 'Connected Reporting' do
   pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
   pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end
