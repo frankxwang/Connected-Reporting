@@ -12,6 +12,7 @@
 		01A649F31E99D0A400520AA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F11E99D0A400520AA9 /* Main.storyboard */; };
 		01A649F51E99D0A400520AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F41E99D0A400520AA9 /* Assets.xcassets */; };
 		01A649F81E99D0A400520AA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A649F61E99D0A400520AA9 /* LaunchScreen.storyboard */; };
+		01A64A001E99D91400520AA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		01A649F41E99D0A400520AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A649F71E99D0A400520AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01A649F91E99D0A400520AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		01A649EC1E99D0A400520AA9 /* Connected Reporting */ = {
 			isa = PBXGroup;
 			children = (
+				01A649FF1E99D91400520AA9 /* GoogleService-Info.plist */,
 				01A649ED1E99D0A400520AA9 /* AppDelegate.swift */,
 				01A649EF1E99D0A400520AA9 /* ViewController.swift */,
 				01A649F11E99D0A400520AA9 /* Main.storyboard */,
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A649F81E99D0A400520AA9 /* LaunchScreen.storyboard in Resources */,
+				01A64A001E99D91400520AA9 /* GoogleService-Info.plist in Resources */,
 				01A649F51E99D0A400520AA9 /* Assets.xcassets in Resources */,
 				01A649F31E99D0A400520AA9 /* Main.storyboard in Resources */,
 			);
@@ -300,6 +304,7 @@
 				01A649FE1E99D0A400520AA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
