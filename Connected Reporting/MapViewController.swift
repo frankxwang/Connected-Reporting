@@ -25,35 +25,56 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
+            let marker = GMSMarker()
+            let pos = locationManager.location?.coordinate
+            marker.position = CLLocationCoordinate2D(latitude: (pos?.latitude)!, longitude: (pos?.longitude)!)
+            marker.title = "Position"
+            marker.snippet = "You are here"
+            marker.map = mapView
         }
         // Do any additional setup after loading the view.
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        let marker = GMSMarker()
-        let pos = locationManager.location?.coordinate
-        marker.position = CLLocationCoordinate2D(latitude: (pos?.latitude)!, longitude: (pos?.longitude)!)
-        marker.title = "Position"
-        marker.snippet = "You are here"
-        marker.map = mapView
         var num = 0
-        ref.observe(.value, with: {snapshot in
-            num = Int(snapshot.childrenCount)
-        }
-        )
-            
+        ref.observe(.value, with: { (snapshot) in
+            num = snapshot.children.allObjects.count
+        })
+        print(num)
         for i in 0..<num{
-            ref.child(String(i)).ref.queryOrdered(byChild: "Description").observe(.childAdded, with: { snapshot in
-                if let latit = snapshot.value(forKey: "Latit") as? Double {
-                    if let long = snapshot.value(forKey: "Long") as? Double{
-                        print("\(latit) \(long)")
-                        let marker = GMSMarker()
-                        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(latit), longitude:CLLocationDegrees(long))
-                        marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
-                        marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
-                        marker.map = self.mapView
+            let marker = GMSMarker()
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() {
+                    if let all = ((snapshot.value as AnyObject).allKeys)! as? [String]{
+                        for a in all{
+                            if let value = snapshot.value(forKey: a) as? [[String:String]]{
+                                
+                            }
+                        }
                     }
                 }
             })
+        }
+        for i in 0..<num{
+            if let latit = ref.child(String(i)).value(forKey: "Latit") as? Double, let long = ref.child(String(i)).value(forKey: "Long") as? Double,let description = ref.child(String(i)).value(forKey: "Description") as? String,let title = ref.child(String(i)).value(forKey: "Title") as? String{
+                    let marker = GMSMarker()
+                    marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(latit), longitude:CLLocationDegrees(long))
+                    marker.snippet = description
+                    marker.title = title
+                    marker.map = self.mapView
+                    print("Created Marker")
+            }
+//            ref.child(String(i)).ref.queryOrdered(byChild: "Description").observe(.childAdded, with: { snapshot in
+//                if let latit = snapshot.value(forKey: "Latit") as? Double {
+//                    if let long = snapshot.value(forKey: "Long") as? Double{
+//                        print("\(latit) \(long)")
+//                        let marker = GMSMarker()
+//                        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(latit), longitude:CLLocationDegrees(long))
+//                        marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
+//                        marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
+//                        marker.map = self.mapView
+//                    }
+//                }
+//            })
         }
 //        ref.observe(.value, with: {snapshot in
 //            num = Int(snapshot.childrenCount)
