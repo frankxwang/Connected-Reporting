@@ -16,6 +16,7 @@ import FirebaseDatabase
 class MapViewController: UIViewController,CLLocationManagerDelegate{
     var ref: FIRDatabaseReference!
     let locationManager = CLLocationManager()
+    var num = 0
     var mapView: GMSMapView? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,29 +32,30 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
             marker.title = "Position"
             marker.snippet = "You are here"
             marker.map = mapView
+            print(num)
+            for i in 0..<num{
+                let marker = GMSMarker()
+                let info = ref.child(String(i))
+                info.child("Description").observe(.value, with: { (snapshot) in
+                    marker.snippet = snapshot.value as? String
+                })
+                info.child("Title").observe(.value, with: { (snapshot) in
+                    marker.title = snapshot.value as? String
+                })
+                info.child("Latit").observe(.value, with: { (snapshot) in
+                    marker.position.latitude = snapshot.value as! CLLocationDegrees
+                    print("Got")
+                })
+                info.child("Long").observe(.value, with: { (snapshot) in
+                    marker.position.longitude = snapshot.value as! CLLocationDegrees
+                })
+                marker.map = mapView
+            }
         }
         // Do any additional setup after loading the view.
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        var num = 0
-        ref.observe(.value, with: { (snapshot) in
-            num = snapshot.children.allObjects.count
-        })
-        print(num)
-        for i in 0..<num{
-            let marker = GMSMarker()
-            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.exists() {
-                    if let all = ((snapshot.value as AnyObject).allKeys)! as? [String]{
-                        for a in all{
-                            if let value = snapshot.value(forKey: a) as? [[String:String]]{
-                                
-                            }
-                        }
-                    }
-                }
-            })
-        }
+        /*
         for i in 0..<num{
             if let latit = ref.child(String(i)).value(forKey: "Latit") as? Double, let long = ref.child(String(i)).value(forKey: "Long") as? Double,let description = ref.child(String(i)).value(forKey: "Description") as? String,let title = ref.child(String(i)).value(forKey: "Title") as? String{
                     let marker = GMSMarker()
@@ -63,33 +65,34 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
                     marker.map = self.mapView
                     print("Created Marker")
             }
-//            ref.child(String(i)).ref.queryOrdered(byChild: "Description").observe(.childAdded, with: { snapshot in
-//                if let latit = snapshot.value(forKey: "Latit") as? Double {
-//                    if let long = snapshot.value(forKey: "Long") as? Double{
-//                        print("\(latit) \(long)")
-//                        let marker = GMSMarker()
-//                        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(latit), longitude:CLLocationDegrees(long))
-//                        marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
-//                        marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
-//                        marker.map = self.mapView
-//                    }
-//                }
-//            })
+            ref.child(String(i)).ref.queryOrdered(byChild: "Description").observe(.childAdded, with: { snapshot in
+                if let latit = snapshot.value(forKey: "Latit") as? Double {
+                    if let long = snapshot.value(forKey: "Long") as? Double{
+                        print("\(latit) \(long)")
+                        let marker = GMSMarker()
+                        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(latit), longitude:CLLocationDegrees(long))
+                        marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
+                        marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
+                        marker.map = self.mapView
+                    }
+                }
+            })
         }
-//        ref.observe(.value, with: {snapshot in
-//            num = Int(snapshot.childrenCount)
-//            
-//                let num = snapshot.childSnapshot(forPath: String(i))
-//                let latit = num.childSnapshot(forPath: "Latit").value
-//                let long = num.childSnapshot(forPath: "Long").description
-//                let marker = GMSMarker()
-//                marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(latit)!), longitude: CLLocationDegrees(Double(long)!))
-//                marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
-//                marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
-//                marker.map = self.mapView
-//            }
-//        })
-//        
+        ref.observe(.value, with: {snapshot in
+            num = Int(snapshot.childrenCount)
+            
+                let num = snapshot.childSnapshot(forPath: String(i))
+                let latit = num.childSnapshot(forPath: "Latit").value
+                let long = num.childSnapshot(forPath: "Long").description
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(Double(latit)!), longitude: CLLocationDegrees(Double(long)!))
+                marker.snippet = snapshot.childSnapshot(forPath: "Description").value as! String?
+                marker.title = snapshot.childSnapshot(forPath: "Title").value as! String?
+                marker.map = self.mapView
+            }
+        })
+ */
+
     }
     override func loadView() {
         ref = FIRDatabase.database().reference()
@@ -97,6 +100,9 @@ class MapViewController: UIViewController,CLLocationManagerDelegate{
         let camera = GMSCameraPosition.camera(withLatitude: 37.3229978, longitude: -122.0321823, zoom: 13.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
+        ref.child("MarkerNum").observe(.value, with: { (snapshot) in
+            self.num = snapshot.value as! Int
+        })
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

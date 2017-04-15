@@ -18,13 +18,15 @@ class ReportingViewController: UIViewController {
     @IBOutlet weak var titleVal: UITextView!
     @IBAction func Report(_ sender: Any) {
         var num = 0
-        ref.observe(.value, with: {snapshot in
-            num = Int(snapshot.childrenCount)
+        ref.child("MarkerNum").observe(.value, with: { (snapshot) in
+            print(snapshot.value! as! Int)
         })
-        self.ref.child(String(num)).child("Description").setValue(descriptionVal.text)
-        self.ref.child(String(num)).child("Title").setValue(titleVal.text)
-        self.ref.child(String(num)).child("Latit").setValue(CLLocationManager().location?.coordinate.latitude)
-        self.ref.child(String(num)).child("Long").setValue(CLLocationManager().location?.coordinate.longitude)
+        ref.child("MarkerNum").setValue(num+1)
+//        print(num+1)
+        ref.child(String(num)).child("Description").setValue(descriptionVal.text)
+        ref.child(String(num)).child("Title").setValue(titleVal.text)
+        ref.child(String(num)).child("Latit").setValue(CLLocationManager().location?.coordinate.latitude)
+        ref.child(String(num)).child("Long").setValue(CLLocationManager().location?.coordinate.longitude)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
